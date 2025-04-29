@@ -13,14 +13,6 @@ mkdir -p $TEMP_DIR/DEBIAN
 echo "Copy control file for DEBIAN/"
 cp src/DEBIAN/control $TEMP_DIR/DEBIAN/
 
-echo "Copy pre and post scripts"
-cp src/DEBIAN/postinst ${TEMP_DIR}/DEBIAN/
-sudo chmod 0755 ${TEMP_DIR}/DEBIAN/postinst
-cp src/DEBIAN/prerm ${TEMP_DIR}/DEBIAN/
-sudo chmod 0755 ${TEMP_DIR}/DEBIAN/prerm
-cp src/DEBIAN/postrm ${TEMP_DIR}/DEBIAN/
-sudo chmod 0755 ${TEMP_DIR}/DEBIAN/postrm
-
 echo "Copy python into place"
 cp src/trees.py $TEMP_DIR/usr/local/bin/
 
