@@ -25,10 +25,10 @@ echo "Copy python into place"
 cp src/trees.py $TEMP_DIR/usr/local/bin/
 
 echo "Copy mysklearn into place"
-cp src/mysklearn $TEMP_DIR/usr/local/bin/
+cp src/mysklearn -r $TEMP_DIR/usr/local/bin/
 
 echo "Copy input_data into place"
-cp src/input_data $TEMP_DIR/usr/local/bin/
+cp src/input_data -r $TEMP_DIR/usr/local/bin/
 
 echo "Building deb file"
 dpkg-deb --root-owner-group --build $TEMP_DIR
