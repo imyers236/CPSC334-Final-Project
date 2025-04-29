@@ -1,0 +1,9 @@
+Package: tree
+Version: 2.0.0
+Depends: python3, python3-pytest, make
+Section: utils
+Priority: optional
+Architecture: all
+Maintainer: Myers <imyers@zagmail.gonzaga.edu>
+Description: This is an script to
+  run decision trees

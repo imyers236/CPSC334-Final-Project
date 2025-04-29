@@ -1,0 +1,6 @@
+#!/bin/bash
+
+echo "Starting post remove script"
+sudo systemctl disable tree
+sudo systemctl daemon-reload
+sudo userdel -f tree
