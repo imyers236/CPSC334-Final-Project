@@ -24,8 +24,5 @@ lint-deb: debLint.sh
 docker-build: 
 	docker build -t tree:latest .
 
-docker-run: 
-	docker run --rm --mount type=bind,source=/tmp,target=/tmp tree:latest
-
 docker-image: 
 	docker run --rm tree:latest
