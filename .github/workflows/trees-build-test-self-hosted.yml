@@ -1,5 +1,5 @@
 name: trees-build-test-self-hosted
-run-name: ${{ github.actor }} is building and testing counter service
+run-name: ${{ github.actor }} is building and testing decision tree code
 on: [push]
 jobs:
   build:
@@ -68,8 +68,8 @@ jobs:
       - name: Save Deb package file
         uses: actions/upload-artifact@v4
         with:
-          name: counter-v2.0.0.deb
-          path: counter-v2.0.0.deb
+          name: tree.deb
+          path: tree.deb
       - run: echo "🍏 This job's status is ${{ job.status }}."
   lint:
     runs-on: self-hosted
@@ -92,10 +92,10 @@ jobs:
         run: |
             apt-get update
             apt-get -y install lintian 
-      - name: Download a counter-v2.0.0.deb
+      - name: Download a tree.deb
         uses: actions/download-artifact@v4
         with:
-          name: counter-v2.0.0.deb
+          name: tree.deb
       - name: Lint Debian Package
         run: |
           make lint-deb
