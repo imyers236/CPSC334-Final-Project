@@ -47,6 +47,7 @@ jobs:
         run: |
             pip install numpy --break-system-packages
             pip install tabulate --break-system-packages
+            pip install scipy
       - name: Test project
         run: make test
       - run: echo "🍏 This job's status is ${{ job.status }}."
