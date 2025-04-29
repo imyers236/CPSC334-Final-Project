@@ -42,6 +42,7 @@ jobs:
         run: |
             apt-get update
             apt-get -y install python3-pytest
+            apt-get -y install python3-pip
       - name: Install numpy and tabulate
         run: |
             pip install numpy --break-system-packages
