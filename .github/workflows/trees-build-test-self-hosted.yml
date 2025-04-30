@@ -77,44 +77,6 @@ jobs:
           name: tree.deb
           path: tree.deb
       - run: echo "🍏 This job's status is ${{ job.status }}."
-  install-image:
-    runs-on: self-hosted
-    container: ubuntu:latest
-    needs: test
-    timeout-minutes: 2
-    steps:
-      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
-      - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
-      - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
-      - name: Check out repository code
-        uses: actions/checkout@v4
-      - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
-      - run: echo "🖥️ The workflow is now ready to test your code on the runner."
-      - name: Install docker
-        run: |
-            apt-get -y update
-            apt-get -y install ca-certificates curl
-            install -m 0755 -d /etc/apt/keyrings
-            curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
-            chmod a+r /etc/apt/keyrings/docker.asc
-            echo \
-            "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
-            $(. /etc/os-release && echo "${UBUNTU_CODENAME:-$VERSION_CODENAME}") stable" | \
-            tee /etc/apt/sources.list.d/docker.list > /dev/null
-            apt-get update
-            apt-get -y install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
-      - name: Install make
-        run: |
-            apt-get -y update
-            apt-get -y install make
-      - name: Build docker image
-        run: |
-          docker run hello-world
-          make docker-build
-      - name: Run docker image
-        run: |
-          make docker-image
-      - run: echo "🍏 This job's status is ${{ job.status }}."
   lint:
     runs-on: self-hosted
     container: ubuntu:latest
