@@ -96,6 +96,7 @@ jobs:
             apt-get install make
       - name: Build docker image
         run: |
+          docker run hello-world
           make docker-build
       - name: Run docker image
         run: |
